@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"pages/_app.tsx -> ../components/CustomCursor\":{\"id\":\"pages/_app.tsx -> ../components/CustomCursor\",\"files\":[\"static/chunks/components_CustomCursor_tsx.js\"]},\"pages/index.tsx -> ../components/TokenGalaxy\":{\"id\":\"pages/index.tsx -> ../components/TokenGalaxy\",\"files\":[\"static/chunks/components_TokenGalaxy_tsx.js\"]}}"

@@ -1,0 +1,52 @@
+.tutorialContainer {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tutorialContent {
+  margin-bottom: 20px;
+}
+
+.tutorialContent h3 {
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.tutorialContent p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.tutorialControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tutorialControls button {
+  padding: 10px 20px;
+  background-color: #0070f3;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.tutorialControls button:hover {
+  background-color: #0051a2;
+}
+
+.tutorialControls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.tutorialControls p {
+  font-weight: bold;
+  color: #333;
+}
