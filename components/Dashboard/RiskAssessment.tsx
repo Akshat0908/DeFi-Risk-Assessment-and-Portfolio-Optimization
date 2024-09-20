@@ -34,14 +34,23 @@ const RiskAssessment: React.FC<RiskAssessmentProps> = ({ data }) => {
     count: 0
   };
 
+  data.forEach(protocol => {
+    if (protocol.riskScore) {
+      averageRisks.smartContractRisk += protocol.riskScore.smartContractRisk;
+      averageRisks.liquidityRisk += protocol.riskScore.liquidityRisk;
+      averageRisks.marketRisk += protocol.riskScore.marketRisk;
+      averageRisks.compositeRisk += protocol.riskScore.compositeRisk;
+      averageRisks.count++;
+    }
+  });
+
   const protocolsWithRiskScore = averageRisks.count;
 
   if (protocolsWithRiskScore > 0) {
-    (Object.keys(averageRisks) as Array<keyof AverageRisks>).forEach(key => {
-      if (key !== 'count') {
-        averageRisks[key] /= protocolsWithRiskScore;
-      }
-    });
+    averageRisks.smartContractRisk /= protocolsWithRiskScore;
+    averageRisks.liquidityRisk /= protocolsWithRiskScore;
+    averageRisks.marketRisk /= protocolsWithRiskScore;
+    averageRisks.compositeRisk /= protocolsWithRiskScore;
   }
 
   const getRiskColor = (value: number) => {
