@@ -15,25 +15,29 @@ interface RiskAssessmentProps {
   data: ProtocolData[];
 }
 
+type RiskKeys = 'smartContractRisk' | 'liquidityRisk' | 'marketRisk' | 'compositeRisk' | 'count';
+
+interface AverageRisks {
+  smartContractRisk: number;
+  liquidityRisk: number;
+  marketRisk: number;
+  compositeRisk: number;
+  count: number;
+}
+
 const RiskAssessment: React.FC<RiskAssessmentProps> = ({ data }) => {
-  const averageRisks = data.reduce(
-    (acc, protocol) => {
-      if (protocol.riskScore) {
-        acc.smartContractRisk += protocol.riskScore.smartContractRisk;
-        acc.liquidityRisk += protocol.riskScore.liquidityRisk;
-        acc.marketRisk += protocol.riskScore.marketRisk;
-        acc.compositeRisk += protocol.riskScore.compositeRisk;
-        acc.count += 1;
-      }
-      return acc;
-    },
-    { smartContractRisk: 0, liquidityRisk: 0, marketRisk: 0, compositeRisk: 0, count: 0 }
-  );
+  const averageRisks: AverageRisks = {
+    smartContractRisk: 0,
+    liquidityRisk: 0,
+    marketRisk: 0,
+    compositeRisk: 0,
+    count: 0
+  };
 
   const protocolsWithRiskScore = averageRisks.count;
 
   if (protocolsWithRiskScore > 0) {
-    Object.keys(averageRisks).forEach(key => {
+    (Object.keys(averageRisks) as Array<keyof AverageRisks>).forEach(key => {
       if (key !== 'count') {
         averageRisks[key] /= protocolsWithRiskScore;
       }
